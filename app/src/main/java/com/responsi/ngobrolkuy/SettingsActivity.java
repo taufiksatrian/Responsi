@@ -19,7 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        htvUsername = findViewById(R.id.tvUsername);
+        htvUsername = findViewById(R.id.tvEmail);
         htvPassword = findViewById(R.id.tvPassword);
 
         htvUsername.setText(getIntent().getStringExtra("username"));
