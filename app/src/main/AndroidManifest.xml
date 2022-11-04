@@ -29,9 +29,6 @@
             android:name=".RoomChatActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfilePicActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                Intent i = new Intent(LoginActivity.this, ProfilePicActivity.class);
+                Intent i = new Intent(LoginActivity.this, MainHomeChatActivity.class);
                 i.putExtra("username", username);
                 i.putExtra("password", password);
                 startActivity(i);

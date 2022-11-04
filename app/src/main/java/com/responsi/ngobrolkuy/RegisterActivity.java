@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RegisterActivity.this, ProfilePicActivity.class);
+                Intent i = new Intent(RegisterActivity.this, MainHomeChatActivity.class);
                 startActivity(i);
             }
         });

@@ -30,16 +30,8 @@ public class SettingsGantiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings_ganti);
 
         btnEdit = findViewById(R.id.pinkCircle);
-        btnLanjut = findViewById(R.id.btn_Lanjut);
         imgProfile = findViewById(R.id.profilePic);
-
-        Uri imageUri = Uri.parse(getIntent().getExtras().getString("KEY_URI"));
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-            imgProfile.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            Toast.makeText(this, "Failed load images", Toast.LENGTH_SHORT).show();
-        }
+        btnLanjut = findViewById(R.id.btn_Lanjut);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +40,15 @@ public class SettingsGantiActivity extends AppCompatActivity {
             }
         });
 
+        btnLanjut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SettingsGantiActivity.this, MainHomeChatActivity.class);
+                startActivity(i);
+            }
+        });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
