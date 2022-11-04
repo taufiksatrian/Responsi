@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_drawable"
-    tools:context=".ProfilePicActivity">
-
+    tools:context=".SettingsGantiActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilePic"
@@ -51,7 +50,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:fontFamily="@font/redhatdisplay_regular"
-        android:text="Lengkapi profil Anda dengan foto profil yang cantik."
+        android:text="Ubah Profile"
         android:textColor="@color/white"
         android:gravity="center_horizontal"
         android:textSize="14pt"
@@ -60,28 +59,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profilePic" />
 
-    <android.widget.Button
-        android:id="@+id/btn_Lewati"
-        android:visibility="visible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Lewati"
-        android:fontFamily="@font/redhatdisplay_regular"
-        android:textStyle="bold"
-        android:textSize="12pt"
-        android:textColor="@color/white"
-        android:layout_margin="32dp"
-        android:background="@drawable/rounded_outline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </android.widget.Button>
 
     <android.widget.Button
         android:id="@+id/btn_Lanjut"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         android:background="@drawable/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

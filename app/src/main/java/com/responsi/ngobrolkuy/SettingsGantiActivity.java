@@ -1,12 +1,12 @@
 package com.responsi.ngobrolkuy;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +15,11 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-public class ProfilePicActivity extends AppCompatActivity {
-    private ImageView btnEdit, imgProfile;
+public class SettingsGantiActivity extends AppCompatActivity {
+    private ImageView btnEdit;
+    private ImageView imgProfile;
+    private Button btnLanjut;
     private Uri imageUri;
-    private Button btnLanjut, btnLewati;
-    private String uriString = null;
 
     private int GALLERY_REQUEST_CODE = 1;
 
@@ -27,12 +27,19 @@ public class ProfilePicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_pic);
+        setContentView(R.layout.activity_settings_ganti);
 
         btnEdit = findViewById(R.id.pinkCircle);
-        imgProfile = findViewById(R.id.profilePic);
         btnLanjut = findViewById(R.id.btn_Lanjut);
-        btnLewati = findViewById(R.id.btn_Lewati);
+        imgProfile = findViewById(R.id.profilePic);
+
+        Uri imageUri = Uri.parse(getIntent().getExtras().getString("KEY_URI"));
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+            imgProfile.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            Toast.makeText(this, "Failed load images", Toast.LENGTH_SHORT).show();
+        }
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,24 +48,7 @@ public class ProfilePicActivity extends AppCompatActivity {
             }
         });
 
-        btnLewati.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ProfilePicActivity.this, MainHomeChatActivity.class);
-                i.putExtra("KEY_URI", uriString);
-                startActivity(i);
-            }
-        });
-        btnLanjut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ProfilePicActivity.this, MainHomeChatActivity.class);
-                i.putExtra("KEY_URI", uriString);
-                startActivity(i);
-            }
-        });
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -70,10 +60,8 @@ public class ProfilePicActivity extends AppCompatActivity {
             if (data != null) {
                 try {
                     imageUri = data.getData();
-                    uriString = imageUri.toString();
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
                     imgProfile.setImageBitmap(bitmap);
-                    btnLewati.setVisibility(View.INVISIBLE);
                     btnLanjut.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     Toast.makeText(this, "Tidak Bisa Memasukan Gambar", Toast.LENGTH_SHORT).show();
